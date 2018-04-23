@@ -4,10 +4,9 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,25 +18,22 @@ public abstract class BaseTest {
     private static final String TEMP_DIR = "./target/junit-temp/" + System.currentTimeMillis();
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Rule
-    public TestName name = new TestName();
-
     private long testStartDate;
 
-    @Before
-    public final void setUpBeforeTest() {
+    @BeforeEach
+    public final void setUpBeforeTest(TestInfo testInfo) {
         testStartDate = System.currentTimeMillis();
         logger.info("===================================================================");
-        logger.info("BEGIN TEST " + name.getMethodName());
+        logger.info("BEGIN TEST " + testInfo.getDisplayName());
         logger.info("===================================================================");
 
     }
 
-    @After
-    public final void tearDownAfterTest() {
+    @AfterEach
+    public final void tearDownAfterTest(TestInfo testInfo) {
         final long executionTime = System.currentTimeMillis() - testStartDate;
         logger.info("===================================================================");
-        logger.info("END TEST " + name.getMethodName());
+        logger.info("END TEST " + testInfo.getDisplayName());
         logger.info("execution time: " + TIME_FORMAT.format(executionTime) + " ms");
         logger.info("===================================================================");
     }

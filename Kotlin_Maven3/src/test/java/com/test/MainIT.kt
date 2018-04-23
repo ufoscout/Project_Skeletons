@@ -2,7 +2,7 @@ package com.test
 
 import org.junit.jupiter.api.Test
 
-class MainTest : BaseTest() {
+class MainIT : BaseTest() {
 
     @Test
     fun shouldRunMain() {

@@ -1,9 +1,8 @@
 package com.test
 
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.rules.TestName
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.TestInfo
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.text.DecimalFormat
@@ -14,9 +13,6 @@ abstract class BaseTest {
 
     protected val logger = LoggerFactory.getLogger(javaClass)
 
-    @Rule @JvmField
-    var name = TestName()
-
     private var testStartDate: Long = 0
 
     protected val tempDirectory: String
@@ -25,20 +21,20 @@ abstract class BaseTest {
             return TEMP_DIR
         }
 
-    @Before
-    fun setUpBeforeTest() {
+    @BeforeEach
+    fun setUpBeforeTest(testInfo: TestInfo) {
         testStartDate = System.currentTimeMillis()
         logger.info("===================================================================")
-        logger.info("BEGIN TEST " + name.methodName)
+        logger.info("BEGIN TEST " + testInfo.displayName)
         logger.info("===================================================================")
 
     }
 
-    @After
-    fun tearDownAfterTest() {
+    @AfterEach
+    fun tearDownAfterTest(testInfo: TestInfo) {
         val executionTime = System.currentTimeMillis() - testStartDate
         logger.info("===================================================================")
-        logger.info("END TEST " + name.methodName)
+        logger.info("END TEST " + testInfo.displayName)
         logger.info("execution time: " + TIME_FORMAT.format(executionTime) + " ms")
         logger.info("===================================================================")
     }
