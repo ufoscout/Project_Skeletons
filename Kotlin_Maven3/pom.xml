@@ -12,25 +12,24 @@
     <!-- Global properties -->
     <java.version>1.8</java.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-    <kotlin.coroutines.version>0.22.5</kotlin.coroutines.version>
-    <kotlin.version>1.2.40</kotlin.version>
+    <kotlin.coroutines.version>0.23.4</kotlin.coroutines.version>
+    <kotlin.version>1.2.50</kotlin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <main.class>com.test.Main</main.class>
 
     <!-- dependency versions -->
-    <junit.version>5.1.1</junit.version>
+    <junit.version>5.2.0</junit.version>
     <logback.version>1.2.3</logback.version>
     <slf4j.version>1.7.25</slf4j.version>
 
     <!-- plugin versions -->
     <dokka-maven-plugin.version>0.9.16</dokka-maven-plugin.version>
     <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
-    <junit-platform-surefire-provider.version>1.1.1</junit-platform-surefire-provider.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-failsafe-plugin.version>${maven-surefire-plugin.version}</maven-failsafe-plugin.version>
-    <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
-    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
+    <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
 
   </properties>
 
@@ -114,13 +113,6 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-plugin.version}</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit-platform-surefire-provider.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -134,13 +126,6 @@
             </goals>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit-platform-surefire-provider.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
